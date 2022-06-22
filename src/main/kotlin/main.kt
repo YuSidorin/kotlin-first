@@ -5,9 +5,10 @@ fun main(){
 // second one
     val likes: Int = 5
     getLikesWord(likes)
-}
 
 // third one
+    calculateDiscount(10000, true)
+}
 
 private fun calculateFee(amount: Int): Int {
     val standartFee = 3500
@@ -15,6 +16,7 @@ private fun calculateFee(amount: Int): Int {
     if (fee < standartFee) {
         fee = standartFee
     }
+    println(fee)
     return fee
 }
 
@@ -30,7 +32,26 @@ private fun getLikesWord(likes: Int): String {
     } else {
         string = firstCase
     }
+    println(string)
     return string
+}
 
+private fun calculateDiscount(amount: Int, isClient: Boolean): Int {
+    val discountFirstLevel = 1000
+    val discountSecondLevel = 10000
+    val discount = 100
+    var result: Int = 0
+    var maxDiscount = amount / 100 * 5
+    var minDiscount = amount / 100 * 1
+    if (amount <= discountFirstLevel) {
+        result = amount
+    } else if (amount > discountFirstLevel && amount < discountSecondLevel) {
+        result = amount - discount
+    } else if (amount > discountSecondLevel) {
+        result = amount - maxDiscount
+    }
+    val totalResult = if (isClient) result - minDiscount else result
+    println(totalResult)
+    return totalResult
 
 }
