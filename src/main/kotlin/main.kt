@@ -25,9 +25,11 @@ private fun getLikesWord(likes: Int): String {
     val secondCase = " человека"
     val thirdCase = " человек"
     var string = ""
-    if (likes === 2 || likes === 3 || likes === 4){
+    if (likes !== 12 && likes % 100 !== 12 &&
+        (likes % 10 === 2 || likes % 10 === 3 || likes % 10 === 4) ){
         string = secondCase
-    } else if (likes === 1){
+    } else if (likes === 1 || likes === 12
+        || likes ===112 || likes === 212){
         string = thirdCase
     } else {
         string = firstCase
